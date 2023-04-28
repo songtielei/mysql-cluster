@@ -3,15 +3,15 @@
 set -eu
 
 user=root
-root_password="111"
+root_password="1qaztyui"
 
 _main() {
-dockertag=$(docker ps | grep mysql-master-slave_mysql_slave | awk '{print $1}')
+dockertag=$(docker ps | grep mysql-cluster_mysql_slave | awk '{print $1}')
 dockertag=(${dockertag// / })
 for dockerId in "${dockertag[@]}";do
   # 从服务器连接主互通
   echo ${dockerId}
-  until $(docker exec ${dockerId} sh -c 'export MYSQL_PWD=111; mysql -u root -e ";"')
+  until $(docker exec ${dockerId} sh -c 'export MYSQL_PWD=1qaztyui; mysql -u root -e ";"')
   do
       echo "等待连接中,请稍候,每 1s 尝试连接一次,可能会重试多次,直到容器启动完毕......"
       sleep 1
