@@ -1,0 +1,35 @@
+# The MySQL  Client configuration file.
+#
+# For explanations see
+# http://dev.mysql.com/doc/mysql/en/server-system-variables.html
+
+[client]
+default-character-set=utf8mb4
+
+[mysql]
+default-character-set=utf8mb4
+
+[mysqld]
+sql-mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+
+# 配置编码
+character-set-client-handshake=FALSE
+character-set-server=utf8mb4
+collation-server=utf8mb4_unicode_ci
+init-connect='SET NAMES utf8mb4'
+
+# 主库配置
+# 设置server-id，一般设置为IP,保证唯一就好
+server-id = 1
+log_bin = 1
+binlog_format = ROW
+binlog_do_db = demo
+
+# GTID:
+gtid-mode=ON  #开启gtid模式
+# 强制gtid一致性，开启后对于特定create table不被支持
+enforce-gtid-consistency=ON
+# 是否取消启动后自动开启复制
+skip-slave-start=OFF
+
+
