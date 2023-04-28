@@ -32,9 +32,9 @@ services:
       - MYSQL_ROOT_PASSWORD=1qaztyui #root 用户密码
       - TZ=Asia/Shanghai
     volumes:
-      - ./master/conf.d:/etc/mysql/conf.d
-      - ./master/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-      - ./master/data:/var/lib/mysql
+      - ./slave1/conf.d:/etc/mysql/conf.d
+      - ./slave1/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ./slave1/data:/var/lib/mysql
     ports:
       - "3308:3306"
     networks:
@@ -55,9 +55,9 @@ services:
       - MYSQL_ROOT_PASSWORD=1qaztyui #root 用户密码
       - TZ=Asia/Shanghai
     volumes:
-      - ./master/conf.d:/etc/mysql/conf.d
-      - ./master/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-      - ./master/data:/var/lib/mysql
+      - ./slave2/conf.d:/etc/mysql/conf.d
+      - ./slave2/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - ./slave2/data:/var/lib/mysql
     ports:
       - "3309:3306"
     networks:
